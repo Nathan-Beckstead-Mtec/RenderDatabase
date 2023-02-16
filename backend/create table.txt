@@ -1,0 +1,25 @@
+```
+--CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- user is a reserved word, use users, account or user_account
+ 
+CREATE TABLE users (
+	id uuid DEFAULT uuid_generate_v4 (),
+	username VARCHAR NOT NULL,
+	password VARCHAR NOT NULL,
+	created timestamptz not null default now(),
+	PRIMARY KEY (id)
+);
+
+insert into users (username, password) values ('jack', 'abc');
+
+insert into users (username, password) 
+values 
+('john','abc'),
+('chris','abc'),
+('may','abc'),
+('jan','abc'),
+('bob', 'abc'),
+('kate', 'abc'),
+('jen', 'abc');
+
+select * from users;
