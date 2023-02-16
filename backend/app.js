@@ -19,6 +19,13 @@ const reactClientURL = 'http://localhost:3000' // react client
 
 
 // Middleware
+
+app.use(express.static("../client/dist"));
+
+
+
+
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(
@@ -45,10 +52,6 @@ app.post("/login", passport.authenticate("local", {failureMessage: "Access Denie
 	res.send("Access Granted");
 })
 
-
-app.get('/', (req, res) => {
-	res.send('hello')
-})
 
 app.get("/getUsers", db.getUsers);
 
